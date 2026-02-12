@@ -1,4 +1,5 @@
 import { Tool } from "@/data/tools";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -7,6 +8,8 @@ interface ToolCardProps {
 }
 
 export function ToolCard({ tool }: ToolCardProps) {
+  const { t } = useLanguage();
+
   return (
     <div className="group relative overflow-hidden rounded-lg border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
       {/* Badge */}
@@ -77,7 +80,7 @@ export function ToolCard({ tool }: ToolCardProps) {
             className="bg-primary hover:bg-primary/90 text-primary-foreground gap-1"
           >
             <a href={tool.affiliateLink} target="_blank" rel="noopener noreferrer">
-              Acessar
+              {t("toolCard.access")}
               <ExternalLink size={14} />
             </a>
           </Button>

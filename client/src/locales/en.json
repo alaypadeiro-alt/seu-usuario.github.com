@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "brand": "AI Tools Hub",
+    "tools": "Tools",
+    "newsletter": "Newsletter"
+  },
+  "hero": {
+    "title": "Discover the Best",
+    "titleHighlight": "AI Tools",
+    "description": "Explore a curated directory of the best artificial intelligence tools for productivity, creativity, and development.",
+    "cta1": "Explore Tools",
+    "cta2": "Learn More"
+  },
+  "tools": {
+    "section": "AI Tools",
+    "search": "Search tools...",
+    "category": "All",
+    "noResults": "No tools found.",
+    "categories": {
+      "all": "All",
+      "chatbots": "Chatbots",
+      "imageGenerators": "Image Generators",
+      "codeAssistants": "Code Assistants",
+      "writingTools": "Writing Tools",
+      "productivity": "Productivity"
+    }
+  },
+  "toolCard": {
+    "access": "Access"
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Receive new AI tools and exclusive tips in your inbox.",
+    "placeholder": "your@email.com",
+    "button": "Subscribe",
+    "success": "Thank you! Check your email to confirm your subscription."
+  },
+  "footer": {
+    "brand": "AI Tools Hub",
+    "description": "The best directory of AI tools for professionals and creators.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "contactText": "Have a tool to suggest?",
+    "copyright": "© 2026 AI Tools Hub. All rights reserved."
+  },
+  "tools_data": {
+    "chatgpt": {
+      "name": "ChatGPT",
+      "description": "The world's most popular AI assistant. Perfect for writing, analysis, programming, and more.",
+      "badge": "Popular"
+    },
+    "midjourney": {
+      "name": "Midjourney",
+      "description": "High-quality AI image generator. Create professional art, designs, and illustrations in seconds.",
+      "badge": "Premium"
+    },
+    "github_copilot": {
+      "name": "GitHub Copilot",
+      "description": "AI-powered code assistant. Write code faster with intelligent suggestions.",
+      "badge": "Developer"
+    },
+    "jasper": {
+      "name": "Jasper",
+      "description": "AI writing tool for marketing content. Create persuasive copy in minutes.",
+      "badge": "Marketing"
+    },
+    "dallae": {
+      "name": "DALL-E 3",
+      "description": "Advanced image generator from OpenAI. Create realistic and artistic images.",
+      "badge": "New"
+    },
+    "notion_ai": {
+      "name": "Notion AI",
+      "description": "AI integration within Notion. Write, edit, and organize with AI assistance.",
+      "badge": "Productivity"
+    }
+  }
+}

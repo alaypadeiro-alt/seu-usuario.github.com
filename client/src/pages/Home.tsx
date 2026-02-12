@@ -1,15 +1,31 @@
 import { useState } from "react";
 import { ToolCard } from "@/components/ToolCard";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { tools, categories } from "@/data/tools";
 import { Search, Mail } from "lucide-react";
 
 export default function Home() {
+  const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+
+  // Mapear categorias para o idioma
+  const getCategoryName = (category: string): string => {
+    const categoryMap: Record<string, string> = {
+      "Todos": t("tools.categories.all"),
+      "Chatbots": t("tools.categories.chatbots"),
+      "Image Generators": t("tools.categories.imageGenerators"),
+      "Code Assistants": t("tools.categories.codeAssistants"),
+      "Writing Tools": t("tools.categories.writingTools"),
+      "Productivity": t("tools.categories.productivity"),
+    };
+    return categoryMap[category] || category;
+  };
 
   const filteredTools = tools.filter((tool) => {
     const matchesCategory = selectedCategory === "Todos" || tool.category === selectedCategory;
@@ -37,15 +53,19 @@ export default function Home() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold">
               AI
             </div>
-            <span className="font-bold text-lg text-foreground">AI Tools Hub</span>
+            <span className="font-bold text-lg text-foreground">{t("nav.brand")}</span>
           </div>
           <div className="hidden md:flex items-center gap-6">
             <a href="#tools" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Ferramentas
+              {t("nav.tools")}
             </a>
             <a href="#newsletter" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Newsletter
+              {t("nav.newsletter")}
             </a>
+            <LanguageSwitcher />
+          </div>
+          <div className="md:hidden">
+            <LanguageSwitcher />
           </div>
         </div>
       </nav>
@@ -64,17 +84,17 @@ export default function Home() {
         <div className="container relative z-10">
           <div className="max-w-2xl">
             <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Descubra as Melhores <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Ferramentas de IA</span>
+              {t("hero.title")} <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Explore um diretório curado das melhores ferramentas de inteligência artificial para produtividade, criatividade e desenvolvimento.
+              {t("hero.description")}
             </p>
             <div className="flex gap-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Explorar Ferramentas
+                {t("hero.cta1")}
               </Button>
               <Button size="lg" variant="outline">
-                Saiba Mais
+                {t("hero.cta2")}
               </Button>
             </div>
           </div>
@@ -85,13 +105,13 @@ export default function Home() {
       <section id="tools" className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Ferramentas de IA</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">{t("tools.section")}</h2>
 
             {/* Search Bar */}
             <div className="relative mb-8">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
               <Input
-                placeholder="Buscar ferramentas..."
+                placeholder={t("tools.search")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-12 h-12 bg-background border-border"
@@ -110,7 +130,7 @@ export default function Home() {
                       : "bg-background border border-border text-foreground hover:border-primary/50"
                   }`}
                 >
-                  {category}
+                  {getCategoryName(category)}
                 </button>
               ))}
             </div>
@@ -125,7 +145,7 @@ export default function Home() {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">Nenhuma ferramenta encontrada.</p>
+              <p className="text-lg text-muted-foreground">{t("tools.noResults")}</p>
             </div>
           )}
         </div>
@@ -136,17 +156,17 @@ export default function Home() {
         <div className="container max-w-2xl">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Fique Atualizado
+              {t("newsletter.title")}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Receba as novas ferramentas de IA e dicas exclusivas na sua caixa de entrada.
+              {t("newsletter.description")}
             </p>
           </div>
 
           <form onSubmit={handleSubscribe} className="flex gap-3">
             <Input
               type="email"
-              placeholder="seu@email.com"
+              placeholder={t("newsletter.placeholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -154,13 +174,13 @@ export default function Home() {
             />
             <Button type="submit" size="lg" className="bg-primary hover:bg-primary/90 gap-2">
               <Mail size={18} />
-              <span className="hidden sm:inline">Inscrever</span>
+              <span className="hidden sm:inline">{t("newsletter.button")}</span>
             </Button>
           </form>
 
           {subscribed && (
             <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
-              Obrigado! Verifique seu email para confirmar a inscrição.
+              {t("newsletter.success")}
             </div>
           )}
         </div>
@@ -171,28 +191,28 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h4 className="font-bold text-foreground mb-4">AI Tools Hub</h4>
+              <h4 className="font-bold text-foreground mb-4">{t("footer.brand")}</h4>
               <p className="text-sm text-muted-foreground">
-                O melhor diretório de ferramentas de IA para profissionais e criadores.
+                {t("footer.description")}
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-foreground mb-4">Links Rápidos</h4>
+              <h4 className="font-bold text-foreground mb-4">{t("footer.quickLinks")}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#tools" className="hover:text-foreground transition">Ferramentas</a></li>
-                <li><a href="#newsletter" className="hover:text-foreground transition">Newsletter</a></li>
+                <li><a href="#tools" className="hover:text-foreground transition">{t("nav.tools")}</a></li>
+                <li><a href="#newsletter" className="hover:text-foreground transition">{t("nav.newsletter")}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-foreground mb-4">Contato</h4>
+              <h4 className="font-bold text-foreground mb-4">{t("footer.contact")}</h4>
               <p className="text-sm text-muted-foreground">
-                Tem uma ferramenta para sugerir?<br />
+                {t("footer.contactText")}<br />
                 <a href="mailto:contato@aitools.hub" className="text-primary hover:underline">contato@aitools.hub</a>
               </p>
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2026 AI Tools Hub. Todos os direitos reservados.</p>
+            <p>{t("footer.copyright")}</p>
           </div>
         </div>
       </footer>

@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "brand": "AI Tools Hub",
+    "tools": "Ferramentas",
+    "newsletter": "Newsletter"
+  },
+  "hero": {
+    "title": "Descubra as Melhores",
+    "titleHighlight": "Ferramentas de IA",
+    "description": "Explore um diretório curado das melhores ferramentas de inteligência artificial para produtividade, criatividade e desenvolvimento.",
+    "cta1": "Explorar Ferramentas",
+    "cta2": "Saiba Mais"
+  },
+  "tools": {
+    "section": "Ferramentas de IA",
+    "search": "Buscar ferramentas...",
+    "category": "Todos",
+    "noResults": "Nenhuma ferramenta encontrada.",
+    "categories": {
+      "all": "Todos",
+      "chatbots": "Chatbots",
+      "imageGenerators": "Image Generators",
+      "codeAssistants": "Code Assistants",
+      "writingTools": "Writing Tools",
+      "productivity": "Productivity"
+    }
+  },
+  "toolCard": {
+    "access": "Acessar"
+  },
+  "newsletter": {
+    "title": "Fique Atualizado",
+    "description": "Receba as novas ferramentas de IA e dicas exclusivas na sua caixa de entrada.",
+    "placeholder": "seu@email.com",
+    "button": "Inscrever",
+    "success": "Obrigado! Verifique seu email para confirmar a inscrição."
+  },
+  "footer": {
+    "brand": "AI Tools Hub",
+    "description": "O melhor diretório de ferramentas de IA para profissionais e criadores.",
+    "quickLinks": "Links Rápidos",
+    "contact": "Contato",
+    "contactText": "Tem uma ferramenta para sugerir?",
+    "copyright": "© 2026 AI Tools Hub. Todos os direitos reservados."
+  },
+  "tools_data": {
+    "chatgpt": {
+      "name": "ChatGPT",
+      "description": "O assistente de IA mais popular do mundo. Perfeito para escrita, análise, programação e muito mais.",
+      "badge": "Popular"
+    },
+    "midjourney": {
+      "name": "Midjourney",
+      "description": "Gerador de imagens por IA de alta qualidade. Crie arte, designs e ilustrações profissionais em segundos.",
+      "badge": "Premium"
+    },
+    "github_copilot": {
+      "name": "GitHub Copilot",
+      "description": "Assistente de código alimentado por IA. Escreva código mais rápido com sugestões inteligentes.",
+      "badge": "Desenvolvedor"
+    },
+    "jasper": {
+      "name": "Jasper",
+      "description": "Ferramenta de escrita por IA para conteúdo de marketing. Crie copy persuasivo em minutos.",
+      "badge": "Marketing"
+    },
+    "dallae": {
+      "name": "DALL-E 3",
+      "description": "Gerador de imagens avançado da OpenAI. Crie imagens realistas e artísticas.",
+      "badge": "Novo"
+    },
+    "notion_ai": {
+      "name": "Notion AI",
+      "description": "Integração de IA dentro do Notion. Escreva, edite e organize com ajuda de IA.",
+      "badge": "Produtividade"
+    }
+  }
+}
