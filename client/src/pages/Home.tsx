@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToolCard } from "@/components/ToolCard";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { AdSense } from "@/components/AdSense";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -101,6 +102,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Ad Space 1 - Below Hero */}
+      <section className="py-8 bg-background">
+        <div className="container">
+          <AdSense adSlot="1234567890" adFormat="auto" fullWidth={true} />
+        </div>
+      </section>
+
       {/* Tools Section */}
       <section id="tools" className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
@@ -138,16 +146,36 @@ export default function Home() {
 
           {/* Tools Grid */}
           {filteredTools.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredTools.map((tool) => (
-                <ToolCard key={tool.id} tool={tool} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredTools.slice(0, 3).map((tool) => (
+                  <ToolCard key={tool.id} tool={tool} />
+                ))}
+              </div>
+
+              {/* Ad Space 2 - Between Tools */}
+              <div className="my-12">
+                <AdSense adSlot="9876543210" adFormat="auto" fullWidth={true} />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredTools.slice(3).map((tool) => (
+                  <ToolCard key={tool.id} tool={tool} />
+                ))}
+              </div>
+            </>
           ) : (
             <div className="text-center py-12">
               <p className="text-lg text-muted-foreground">{t("tools.noResults")}</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Ad Space 3 - Before Newsletter */}
+      <section className="py-8 bg-background">
+        <div className="container">
+          <AdSense adSlot="5555555555" adFormat="auto" fullWidth={true} />
         </div>
       </section>
 
